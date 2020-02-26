@@ -5,6 +5,10 @@ const routerBase = process.env.DEPLOY_ENV === 'GH_PAGES' ? {
   base: `/${process.env.REPO_NAME}/`
 } : {}
 
+const startUrl = process.env.BASE_URL
+  ? `${process.env.BASE_URL + routerBase}`
+  : 'http://localhost:3000'
+
 module.exports = {
   mode: 'universal',
 
@@ -53,7 +57,8 @@ module.exports = {
   pwa: {
     manifest: {
       name: pkg.author.name,
-      short_name: pkg.author.name.split(' ')[0]
+      short_name: pkg.author.name.split(' ')[0],
+      start_url: `${startUrl}?standalone=true`
     },
     icons: {
       sizes: [16, 32, 180, 192, 512]
