@@ -1,5 +1,6 @@
 {
   "projects": {
-    "personal": "personal-9e1c2"
+    "personal": "personal-9e1c2",
+    "default": "personal-9e1c2"
   }
 }
