@@ -1,0 +1,28 @@
+/*------------------------------------*\
+    #BASE
+\*------------------------------------*/
+
+html {
+  display: flex;
+}
+
+body {
+  margin: 0;
+  width: 100%;
+}
+
+.wrapper {
+  min-height: 100vh;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.wrap-header,
+.wrap-footer {
+  flex-shrink: 0;
+}
+
+.main-content {
+  flex-grow: 1;
+}
