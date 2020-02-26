@@ -12,7 +12,7 @@ module.exports = {
   ** Headers of the page
   */
   head: {
-    title: pkg.name,
+    title: pkg.author.name,
     meta: [
       { charset: 'utf-8' },
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },
@@ -43,7 +43,22 @@ module.exports = {
   /*
   ** Nuxt.js modules
   */
-  modules: [],
+  modules: [
+    '@nuxtjs/pwa'
+  ],
+
+  /*
+  ** PWA configuration
+  */
+  pwa: {
+    manifest: {
+      name: pkg.author.name,
+      short_name: pkg.author.name.split(' ')[0]
+    },
+    icons: {
+      sizes: [16, 32, 180, 192, 512]
+    }
+  },
 
   /*
   ** Router middleware
