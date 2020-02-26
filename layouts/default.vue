@@ -20,6 +20,22 @@ export default {
   components: {
     Header,
     Footer
+  },
+  computed: {
+    title() {
+      return this.$store.state.page.title
+    },
+    description() {
+      return this.$store.state.page.description
+    }
+  },
+  head () {
+    return {
+      title: this.title,
+      meta: [
+        { hid: 'description', name: 'description', content: this.description }
+      ]
+    }
   }
 }
 </script>
