@@ -14,7 +14,7 @@
     "generate": "nuxt generate",
     "test": "jest",
     "build:gh-pages": "cross-env DEPLOY_ENV=GH_PAGES nuxt build",
-    "generate:gh-pages": "cross-env DEPLOY_ENV=GH_PAGES nuxt generate && firebase deploy --project $FIREBASE_PROJECT_ID"
+    "generate:gh-pages": "cross-env DEPLOY_ENV=GH_PAGES nuxt generate && firebase deploy --only hosting --project personal"
   },
   "dependencies": {
     "@nuxtjs/firebase": "^4.0.0",
