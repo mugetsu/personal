@@ -1,0 +1,6 @@
+{
+  "projects": {
+    "personal": "personal",
+    "default": "personal"
+  }
+}

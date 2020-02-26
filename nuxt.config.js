@@ -86,7 +86,11 @@ module.exports = {
       measurementId: process.env.FIREBASE_MEASUREMENT_ID
     },
     services: {
-      realtimeDb: true
+      functions: {
+        // emulatorPort: 12345
+      },
+      realtimeDb: true,
+      analytics: true
     }
   },
 
