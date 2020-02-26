@@ -13,6 +13,7 @@
 </template>
 
 <script>
+import { mapGetters } from 'vuex'
 import Header from '~/components/Header.vue'
 import Footer from '~/components/Footer.vue'
 
@@ -22,18 +23,16 @@ export default {
     Footer
   },
   computed: {
-    title() {
-      return this.$store.state.page.title
-    },
-    description() {
-      return this.$store.state.page.description
-    }
+    ...mapGetters([
+      'page'
+    ])
   },
   head () {
     return {
-      title: this.title,
+      title: this.page.title,
       meta: [
-        { hid: 'description', name: 'description', content: this.description }
+        { hid: 'og:description', name: 'og:description', content: this.page.description },
+        { hid: 'description', name: 'description', content: this.page.description }
       ]
     }
   }
