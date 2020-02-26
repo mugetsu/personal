@@ -10,8 +10,11 @@ branches:
   only:
   - master
 
-install:
+before_install:
   - npm i -g yarn
+  - npm i -g firebase-tools
+
+install:
   - yarn
   - yarn generate:gh-pages
 
@@ -26,5 +29,3 @@ deploy:
   - provider: firebase
     token:
       secure: $FIREBASE_TOKEN
-    on:
-      branch: master
