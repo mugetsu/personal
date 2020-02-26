@@ -6,7 +6,7 @@ const routerBase = process.env.DEPLOY_ENV === 'GH_PAGES' ? {
 } : {}
 
 const startUrl = process.env.BASE_URL
-  ? `${process.env.BASE_URL + routerBase}`
+  ? `${process.env.BASE_URL + routerBase.base}`
   : 'http://localhost:3000'
 
 module.exports = {
