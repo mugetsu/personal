@@ -20,6 +20,9 @@ install:
   - yarn generate:gh-pages
 
 deploy:
+  - provider: firebase
+    token:
+      secure: $FIREBASE_TOKEN
   - provider: pages
     skip_cleanup: true
     github_token: $GITHUB_ACCESS_TOKEN
@@ -27,6 +30,3 @@ deploy:
     local_dir: dist
     on:
       branch: master
-  - provider: firebase
-    token:
-      secure: $FIREBASE_TOKEN
