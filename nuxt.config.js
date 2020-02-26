@@ -85,10 +85,8 @@ module.exports = {
       appId: process.env.FIREBASE_APP_ID,
       measurementId: process.env.FIREBASE_MEASUREMENT_ID
     },
+    onFirebaseHosting: false,
     services: {
-      functions: {
-        // emulatorPort: 12345
-      },
       realtimeDb: true,
       analytics: true
     }
