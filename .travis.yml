@@ -13,7 +13,6 @@ branches:
 before_install:
   - npm i -g yarn
   - npm i -g firebase-tools
-  - firebase use default
 
 install:
   - yarn
