@@ -5,10 +5,6 @@ const routerBase = process.env.DEPLOY_ENV === 'GH_PAGES' ? {
   base: `/${process.env.REPO_NAME}/`
 } : {}
 
-const startUrl = process.env.BASE_URL
-  ? `${process.env.BASE_URL + routerBase.base}`
-  : 'http://localhost:3000'
-
 module.exports = {
   mode: 'universal',
 
@@ -48,8 +44,33 @@ module.exports = {
   ** Nuxt.js modules
   */
   modules: [
+    'nuxt-ssr-cache',
     '@nuxtjs/pwa'
   ],
+
+  /*
+  ** Nuxt SSR configuration
+  */
+  cache: {
+    useHostPrefix: false,
+    pages: [
+      '/'
+    ],
+    key(route, context) {
+      // custom function to return cache key, when used previous
+      // properties (useHostPrefix, pages) are ignored. return 
+      // falsy value to bypass the cache
+    },
+    store: {
+      type: 'memory',
+      // maximum number of pages to store in memory
+      // if limit is reached, least recently used page
+      // is removed.
+      max: 100,
+      // number of seconds to store this page in cache
+      ttl: 60
+    }
+  },
 
   /*
   ** PWA configuration
@@ -57,8 +78,7 @@ module.exports = {
   pwa: {
     manifest: {
       name: pkg.author.name,
-      short_name: pkg.author.name.split(' ')[0],
-      start_url: `${startUrl}?standalone=true`
+      short_name: pkg.author.name.split(' ')[0]
     },
     icons: {
       sizes: [16, 32, 180, 192, 512]
