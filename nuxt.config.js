@@ -19,14 +19,18 @@ module.exports = {
       { hid: 'description', name: 'description', content: pkg.description }
     ],
     link: [
-      { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }
+      { rel: 'stylesheet', href: 'https://fonts.googleapis.com/css?family=Roboto:300,400,700&display=swap' },
+      { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
+      { rel: 'preload', href: '/images/standby.png', as: 'image' },
+      { rel: 'preload', href: '/images/walk.png', as: 'image' },
+      { rel: 'preload', href: '/images/attack.png', as: 'image' }
     ]
   },
 
   /*
   ** Customize the progress-bar color
   */
-  loading: { color: '#fff' },
+ loading: '~/components/Loader/index.vue',
 
   /*
   ** Global CSS
@@ -119,7 +123,7 @@ module.exports = {
     /*
     ** You can extend webpack config here
     */
-   extractCSS: true,
+   extractCSS: process.env.NODE_ENV !== 'development',
     optimization: {
       splitChunks: {
         cacheGroups: {
@@ -132,6 +136,7 @@ module.exports = {
         }
       }
     },
-    extend(config, ctx) {}
+    extend(config, ctx) {
+    }
   }
 }
