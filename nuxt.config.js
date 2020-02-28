@@ -4,7 +4,7 @@ const routerBase = process.env.DEPLOY_ENV === 'GH_PAGES' ? {
   base: `/${process.env.REPO_NAME}/`
 } : {}
 
-if (process.env.NODE_ENV === 'development') require('dotenv').config()
+if (process.env.NODE_ENV !== 'production') require('dotenv').config()
 
 module.exports = {
   mode: 'universal',
