@@ -19,14 +19,17 @@ module.exports = {
       { hid: 'description', name: 'description', content: pkg.description }
     ],
     link: [
-      { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }
+      { rel: 'stylesheet', href: 'https://fonts.googleapis.com/css?family=Roboto:300,400,700&display=swap' },
+      { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
+      { rel: 'prefetch', href: '/images/standby.png' },
+      { rel: 'prefetch', href: '/images/walk.png' }
     ]
   },
 
   /*
   ** Customize the progress-bar color
   */
-  loading: { color: '#fff' },
+ loading: '~/components/Loader/index.vue',
 
   /*
   ** Global CSS
@@ -85,10 +88,8 @@ module.exports = {
       appId: process.env.FIREBASE_APP_ID,
       measurementId: process.env.FIREBASE_MEASUREMENT_ID
     },
+    onFirebaseHosting: false,
     services: {
-      functions: {
-        // emulatorPort: 12345
-      },
       realtimeDb: true,
       analytics: true
     }
@@ -121,7 +122,7 @@ module.exports = {
     /*
     ** You can extend webpack config here
     */
-   extractCSS: true,
+   extractCSS: process.env.NODE_ENV !== 'development',
     optimization: {
       splitChunks: {
         cacheGroups: {
@@ -134,6 +135,7 @@ module.exports = {
         }
       }
     },
-    extend(config, ctx) {}
+    extend(config, ctx) {
+    }
   }
 }

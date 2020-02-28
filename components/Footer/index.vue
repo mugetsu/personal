@@ -12,3 +12,12 @@ export default {
   }
 }
 </script>
+
+<style lang="scss" scoped>
+footer {
+  font-weight: 300;
+  font-size: 1.6rem;
+  text-align: center;
+  text-transform: uppercase;
+}
+</style>
