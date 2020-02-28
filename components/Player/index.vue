@@ -8,12 +8,15 @@
     </div>
     <div
       ref="player"
-      class="player">
+      class="player"
+      :class="{
+        'is-visible': isReady
+      }">
       <div
         class="standby"
         :class="[
           {
-            'reversed ': isReversed,
+            'is-reversed ': isReversed,
             'walk': isWalking,
             'attack': isAttacking
           }
@@ -34,6 +37,7 @@ export default {
   },
   data() {
     return {
+      isReady: false,
       playerBox: {},
       worldBox: 0,
       keyState: {},
@@ -114,7 +118,6 @@ export default {
     }
   },
   mounted() {
-    console.log()
     document.addEventListener('keydown', e => {
       this.keyState[e.keyCode || e.which] = true
     })
@@ -122,11 +125,27 @@ export default {
       this.keyState[e.keyCode || e.which] = false
     })
     window.requestAnimationFrame(this.walkLoop)
+    this.checkEdge()
+    this.steps = (this.worldBox / 2) - (this.playerBox.width / 2)
+    this.isReady = true
   }
 }
 </script>
 
 <style lang="scss" scoped>
+.player {
+  opacity: 0;
+  transition: opacity 1s ease;
+}
+
+.is-visible {
+  opacity: 1;
+}
+
+.is-reversed {
+  transform: scaleX(-1);
+}
+
 .standby {
   width: 76px;
   height: 72px;
@@ -146,10 +165,6 @@ export default {
   height: 80px;
   background-image: url('~static/images/attack.png');
   animation: attack .8s steps(10) infinite;
-}
-
-.reversed {
-  transform: scaleX(-1);
 }
 
 @keyframes standby {
