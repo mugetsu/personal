@@ -1,6 +1,8 @@
 <template>
   <div class="scene">
     <Player />
+    <div class="land"></div>
+    <!-- <div class="wall"></div> -->
     <!-- <Cryflow :phrases="phrases" /> -->
   </div>
 </template>
@@ -34,13 +36,34 @@ export default {
 
 <style lang="scss">
 .scene {
-  position: absolute;
-  left: 50%;
-  top: 50%;
-  transform: translate(-50%, -50%);
+  position: relative;
+  width: 100%;
+  overflow: hidden;
 
   .player {
-    display: block;
+    position: absolute;
+    top: 50%;
+    transform: translate(0, -50%);
+  }
+
+  .land {
+    position: absolute;
+    left: 0;
+    top: calc(50% + 38px);
+    width: 100%;
+    height: 1px;
+    background: #6E3E27;
+    transform: translateY(-50%);
+  }
+
+  .wall {
+    position: absolute;
+    left: 30%;
+    top: calc(50% - 1px);
+    width: 80px;
+    height: 80px;
+    background: #000;
+    transform: translateY(-50%);
   }
 }
 </style>

@@ -21,8 +21,9 @@ module.exports = {
     link: [
       { rel: 'stylesheet', href: 'https://fonts.googleapis.com/css?family=Roboto:300,400,700&display=swap' },
       { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
-      { rel: 'prefetch', href: '/images/standby.png' },
-      { rel: 'prefetch', href: '/images/walk.png' }
+      { rel: 'preload', href: '/images/standby.png', as: 'image' },
+      { rel: 'preload', href: '/images/walk.png', as: 'image' },
+      { rel: 'preload', href: '/images/attack.png', as: 'image' }
     ]
   },
 
