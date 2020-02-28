@@ -1,9 +1,10 @@
-require('dotenv').config()
 const pkg = require('./package')
 
 const routerBase = process.env.DEPLOY_ENV === 'GH_PAGES' ? {
   base: `/${process.env.REPO_NAME}/`
 } : {}
+
+if (process.env.NODE_ENV === 'development') require('dotenv').config()
 
 module.exports = {
   mode: 'universal',
